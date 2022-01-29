@@ -1,0 +1,55 @@
+<h5 class="card-title text-center">{{titulo}}</h5>
+    <div class="row">
+        <div class="col">
+            <select class="form-control" name="query" [(ngModel)]="query" placeholder="--seleccione el filtro--">
+                <option value="" selected>--seleccione filtro--</option>
+                <option *ngFor="let q of querys" value={{q}}>{{q}}</option>
+            </select>
+        </div>
+        <div class="col">
+            <select class="form-control" name="filtro" (change)="SetValuesFilter($event.target)" [(ngModel)]="filtro">
+                <option value="eye"  name="eje" >eye</option>
+                <option value="gender">gender</option>
+                    <option value="film">film</option>
+            </select>
+            
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" (click)="GetQuery()">Buscar</button>
+        </div>
+    </div>
+<hr>
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-4" *ngFor="let p of info_personajes;">
+        <div class="card md-2 mt-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{p['name']}}</h5>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <span>Color De Ojos: <span class="badge badge-secondary">{{p['eye_color']}}</span></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>Genero: <span class="badge badge-secondary">{{p['gender']}}</span></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>Peliculas Interpretadas : 
+                                    <ul class="list-group">
+                                        <li class="list-group-item list-group-item-success" *ngFor="let pe of p['films']">{{ShowFilmName(pe)}}</li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

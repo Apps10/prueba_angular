@@ -1,0 +1,32 @@
+<h5 class="card-title text-center">Peliculas de Star Wars</h5>
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-4" *ngFor="let f of films">
+        <div class="card md-2 mt-2" style="width: 18rem;">
+            <!--<p>{{f|json}}</p>-->
+            <div class="card-body">
+                <img class="card-img-top" src="https://www.dodmagazine.es/wp-content/uploads/2017/12/star-wars-guerra-galaxias-1.jpg" alt="Card image cap">
+                <h5 class="card-title">{{f['title']}}</h5>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <span>Numero de episodio: <span class="badge badge-secondary">{{f['episode_id']}}</span></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>Director: <span class="badge badge-secondary">{{f['director']}}</span></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a [routerLink]="['/Characters',f['episode_id']]" class="badge badge-info">Ver Personajes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
